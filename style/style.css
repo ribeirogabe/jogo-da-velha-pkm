@@ -1,0 +1,366 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(46, 42, 42);
+    background-size: 100%;
+    height: 45vh;
+    width: 100vw;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* LOADING.... */
+
+#screen_load{
+    display: flex;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    font-family: 'Press Start 2P', cursive;
+}
+
+@keyframes screenChangeColor{
+    0%{background-color: #4152de; z-index: 1; visibility: visible; color: #b44aee;}
+    50%{background-color: #b43131; z-index: 1; visibility: visible; color: #ffd5ee;}
+    99%{background-color: black; z-index: 1; visibility: hidden; color: black;;}
+    100%{background-color: rgba(0, 0, 0,0); display: none; visibility: hidden;}
+}
+
+/* START MESSAGE */
+
+.start_message{
+    display: flex;
+    background-color: rgb(57, 32, 82);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 4;
+    
+}
+
+.text_start{
+    color: #ffd5ee;
+    font-size: 3rem;
+    font-family: 'Press Start 2P', cursive;
+    animation-name: changeColor;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.button_start{
+    background-color: #6a319c;
+    color: #ffd5ee;
+    border: none;
+    font-size: 1.5rem;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    margin-top: 60px;
+    font-family: 'Press Start 2P', cursive;
+    }
+
+
+.button_start:hover{
+    background-color: #ffd5ee;
+    color: #6a319c;
+}
+
+.mymedia{
+    position: relative;
+    top: 100px;
+    font-size: 10px;
+    font-family: 'Press Start 2P', cursive;
+    animation-name: changeColor;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.mymedia2{
+    position: absolute;
+    left: 43%;
+    right: 43%;
+    top: 90%;
+    font-size: 10px;
+    font-family: 'Press Start 2P', cursive;
+    animation-name: changeColor;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* LOGO POKEMON */
+.div_logo_pokemon{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.logo_pokemon{
+    width: 300px;
+    position: absolute;
+    top: 30px;
+    filter: drop-shadow(3px 3px  5px #3c5aa6);
+}
+
+/* IMAGES POKEMONS*/
+
+.pkm_imgs{
+    display: flex;
+}
+
+.plusle_img{
+    display: flex;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    right: 13%;
+    top: 15%;
+    bottom: 0px;
+    filter: drop-shadow(5px 5px 5px #ee8383);
+}
+
+.minun_img{
+    position: relative;
+    display: flex;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    left: 13%;
+    top: 15%;
+    bottom: 0px;
+    filter: drop-shadow(5px 5px 5px #739cf6);
+    transform: scaleX(-1);
+
+}
+
+/* BOARD */
+
+.board{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3,auto);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+    filter: drop-shadow(1px 1px 2px #ffcb05);
+}
+
+
+/* CELL */
+
+.cell{
+    width: 100px;
+    height: 100px;
+    border: 3px solid #f5ff40;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7){
+    border-left: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9){
+    border-bottom: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9){
+    border-right: none;
+}
+
+.cell.x, .cell.circle{
+    cursor: not-allowed;
+}
+
+/* X */
+.cell.x{
+    background-image: url(../assets/images/pixel/minun_pixel.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(2px 2px 5px #739cf6);
+}
+
+.board.x .cell:not(.x):not(.circle):hover{
+    background-image: url(../assets/images/pixel/blue_pixel.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    filter: drop-shadow(2px 2px 5px #739cf6);
+}
+
+/* circle */
+.cell.circle{
+    background-image: url(../assets/images/pixel/plusle_pixel.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(2px 2px 5px #ee8383);
+}
+
+.board.circle .cell:not(.x):not(.circle):hover{
+    background-image: url(../assets/images/pixel/red_pixel.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    filter: drop-shadow(2px 2px 5px #ee8383);
+}
+
+
+/* animation win message */
+
+@keyframes changeColor{
+    0%{color: #b44aee;}
+    50%{color:#ffd5ee;}
+    100%{ color: #b44aee;}
+}
+
+.text_winner{
+    animation-name: changeColor;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* WIN MESSAGE */
+
+.win_message{
+    background-color: rgba(57, 32, 82,0.8);
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button_winner:hover{
+    background-color: #ffd5ee;
+    color: #6a319c;
+
+}
+
+.button_winner{
+    background-color: #6a319c;
+    color: #ffd5ee;
+    border: none;
+    font-size: 1.5rem;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    margin-top: 60px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.text_winner{
+    color: #ffd5ee;
+    font-size: 5rem;
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+.show_win_message{
+    display: flex;
+}
+
+.hidden_start_message{
+    display: none;
+}
+
+/* RESPONSIVe */
+
+@media screen and (max-width:768px){
+
+
+    /* images plusle and minun */
+    .pkm_imgs{
+        display: none;
+    }
+
+    .div_logo_pokemon{
+        background-color: #b44aee;
+        width: 200px;
+    }
+
+    .logo_pokemon{
+        width: 60vw;
+        position: absolute;
+        left: 20vw;
+        right: 20vw;
+    }
+
+    /* board */
+
+    .board{
+        position: absolute;
+        top: 25vh;
+        bottom: 25vh;
+        left: 10vw;
+        right: 10vw;
+        width: 80vw;
+        height: 50vh;
+
+    }
+
+    /* winner screen  */
+    .text_winner{
+        font-size: 20px;
+    }
+
+    /* start screen */
+
+    .text_start{
+        font-size: 25px;
+        display: flex;
+        text-align: center;
+    }
+    
+    .mymedia2{
+        position: absolute;
+        left: 30vw;
+        right: 30vw;
+    }
+}
